@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Header } from "./components/Header";
+import { ProjectCard } from "./components/ProjectCard";
 
-function App() {
+const projectsFromApi = [
+  {
+    title: "Project 1",
+    description: "this is one",
+  },
+  {
+    title: "Project 2",
+    description: "this is one",
+  },
+  {
+    title: "Project 3",
+    description: "this is one",
+  },
+  {
+    title: "Project 4",
+    description: "this is one",
+  },
+];
+// Step 1 - declare component as a function
+const App = (props) => {
+  // React components always have to return JSX (HTML)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header title="Chris Bradshaw" subtitle="Full Stack Developer" />
+      <main>
+        <h3 className="title">My Projects</h3>
+        <div className="projects">
+          {projectsFromApi.map((project) => {
+            return <ProjectCard {...project} />;
+          })}
+        </div>
+      </main>
+    </>
   );
-}
+};
 
+// Step 2 - export your component
 export default App;
